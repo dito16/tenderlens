@@ -1,0 +1,32 @@
+{
+  "scope": "human-authored reference facts; not an asserted TenderLens output",
+  "consistent": {
+    "pdf_count": 3,
+    "object": "current interior repair",
+    "budget_rub": "5820000",
+    "application_deadline": "2026-10-23",
+    "duration": "45 calendar days",
+    "advance": "not provided",
+    "sro": "not required per fictional scenario",
+    "acceptance": [
+      "КС-2",
+      "КС-3"
+    ],
+    "intentional_cross_document_conflict": false
+  },
+  "conflicting": {
+    "pdf_count": 3,
+    "object": "roof repair",
+    "budget_rub": "6750000",
+    "application_deadline": "2026-10-26",
+    "notice_duration": "30 work days",
+    "contract_duration": "40 calendar days",
+    "notice_advance": "20% provided",
+    "contract_advance": "not provided",
+    "notice_sro": "required",
+    "specification_sro": "not required",
+    "old_revision_quote": "10% advance in explicitly superseded version",
+    "intentional_cross_document_conflict": true
+  },
+  "known_limitations": "TenderLens may detect advance wording contradiction but is not guaranteed to flag conflicting work duration or SRO. Any missed discrepancy is an observed limitation, not a passed test."
+}

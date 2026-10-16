@@ -1,0 +1,26 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+# Locally generated output and generated test packs
+reports/
+demo-output/
+demo-inputs/
+dist/
+# Local credentials/environment files: never commit secrets
+.env
+.env.*
+!.env.example
+# Platform
+.DS_Store
+
+# Local testing and temporary files
+.venv*/
+.local-qa/
+*.log
+MAC_VALIDATION_RETURN/
+*.sqlite*
+*.db
+*.zip

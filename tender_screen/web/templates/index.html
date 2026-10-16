@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf-token" content="{{ csrf }}"><meta name="robots" content="noindex,nofollow">
+<title>TenderLens - Анализ закупок</title>
+<link rel="icon" href="{{ url_for('static',filename='tenderlens-logo.svg') }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ url_for('static',filename='app.css') }}">
+<script src="{{ url_for('static',filename='app.js') }}" defer></script></head>
+<body>
+<header class="app-header"><div class="brand"><img class="logo" src="{{ url_for('static',filename='tenderlens-logo.svg') }}" alt="Логотип TenderLens" width="42" height="42"><strong>TenderLens</strong></div></header>
+<main>
+  <div id="status" role="status" aria-live="polite" class="status">Загрузка проектов…</div>
+  <section class="workspace">
+    <div class="sidebar">
+      <div class="section-title"><h2>Проекты</h2></div>
+      <label for="projects">Текущий проект</label>
+      <select id="projects" aria-label="Выбрать проект"><option value="">Выберите проект</option></select>
+      <form id="create-project" class="stack"><label for="new-project">Новый проект</label><input id="new-project" maxlength="100" required placeholder="Например: Ремонт кровли"><button type="submit">Создать проект</button></form>
+      <div class="rule"></div>
+      <form id="upload" class="stack"><h3>Документы PDF</h3><label for="pdfs" class="sr-only">Выбрать PDF</label>
+      <input type="file" id="pdfs" name="pdfs" multiple accept=".pdf,application/pdf" required><small>Текстовые PDF · до 10 файлов · 30 МБ на файл</small>
+      <button type="submit" id="upload-btn">Импортировать PDF</button></form>
+      <button id="analyze" class="secondary block">Запустить анализ</button>
+      <div class="rule"></div>
+      <h3>Документы <span id="docs-count" class="count">0</span></h3><div id="documents" class="documents empty">Выберите проект</div>
+    </div>
+    <div class="content">
+      <div class="tools"><div><h2>Результаты анализа</h2></div>
+      <div class="run-tools"><label for="runs">Запуск</label><select id="runs"><option value="">Пока нет запусков</option></select><button id="export" class="secondary" disabled>Экспорт ZIP</button></div></div>
+      <div class="metrics" id="metrics"><div><b id="metric-docs">0</b><small>Документов</small></div><div><b id="metric-facts">0</b><small>Извлечённых фактов</small></div><div><b id="metric-questions">0</b><small>Вопросов к проверке</small></div><div><b id="metric-reviews">0</b><small>Исправленных фактов</small></div></div>
+      <nav class="tabs" aria-label="Разделы анализа"><button class="tab active" data-tab="claims" aria-current="page">Карточки и факты</button><button class="tab" data-tab="questions">Расхождения</button><button class="tab" data-tab="history">История</button></nav>
+      <section id="claims-panel" class="panel"><div class="filters"><label for="filter-kind">Тип факта</label><select id="filter-kind"><option value="">Все типы</option></select><label for="filter-text">Поиск</label><input id="filter-text" placeholder="Источник, цитата, значение"></div><div id="claims" class="empty">Запустите анализ, чтобы увидеть доказательства.</div></section>
+      <section id="questions-panel" class="panel hidden"><div id="questions" class="empty">Вопросов пока нет.</div></section>
+      <section id="history-panel" class="panel hidden"><div id="history" class="empty">История запусков пуста.</div></section>
+    </div>
+  </section>
+</main>
+<dialog id="viewer"><div class="dialoghead"><div><strong id="viewer-title">Источник PDF</strong><small id="viewer-info"></small></div><button id="close-viewer" class="secondary">Закрыть</button></div>
+<iframe id="pdf-frame" title="Просмотр PDF"></iframe></dialog>
+<footer>Результаты требуют проверки</footer>
+</body></html>

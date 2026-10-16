@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tenderlens"
+version = "0.7.0"
+description = "Local evidence-backed procurement PDF review (experimental preview)"
+license = "AGPL-3.0-only"
+requires-python = ">=3.11"
+dependencies = ["PyMuPDF==1.28.2", "Flask==3.1.2"]
+license-files = ["LICENSE"]
+classifiers = ["Programming Language :: Python :: 3", "Programming Language :: Python :: 3.11", "Operating System :: MacOS :: MacOS X"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tender_screen*", "qa*"]
+
+[tool.setuptools.package-data]
+"tender_screen" = ["migrations/*.sql", "web/templates/*.html", "web/static/*.css", "web/static/*.js", "web/static/*.svg"]
